@@ -59,7 +59,6 @@ class Pipeline:
                 url="https://duckduckgo.com/duckchat/v1/chat",
                 json=payload,
                 headers=headers,
-                stream=True,
             )
 
             r.raise_for_status()
