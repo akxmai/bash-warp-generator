@@ -29,6 +29,11 @@ class Pipeline:
         print(f"on_shutdown:{__name__}")
         pass
 
+    def GetVQD(self) -> str:
+        response = requests.get(self.status_url, headers=self.headers)
+        if response.headers.get('x-vqd-4'): return response.headers['x-vqd-4']
+        else: raise self.OperationError("GetVQD(): No 'x-vqd-4' header found.")
+
     def pipe(
         self, user_message: str, model_id: str, messages: List[dict], body: dict
     ) -> Union[str, Generator, Iterator]:
@@ -42,7 +47,7 @@ class Pipeline:
 
         headers = {}
         headers["Content-Type"] = "application/json"
-        headers["x-vqd-4"] = '4-91675495526935490090615873620037444973'
+        headers["x-vqd-4"] = self.GetVQD()
 
         payload = {**body, "model": MODEL}
 
