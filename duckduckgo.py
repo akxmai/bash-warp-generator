@@ -17,6 +17,7 @@ class Pipeline:
         # The identifier must be an alphanumeric string that can include underscores or hyphens. It cannot contain spaces, special characters, slashes, or backslashes.
         # self.id = "openai_pipeline"
         self.name = "Mistral-8x7B (duck.ai)"
+        self.status_url = 'https://duckduckgo.com/duckchat/v1/status'
         pass
 
     async def on_startup(self):
