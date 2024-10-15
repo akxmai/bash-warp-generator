@@ -16,7 +16,7 @@ class Pipeline:
         # The identifier must be unique across all pipelines.
         # The identifier must be an alphanumeric string that can include underscores or hyphens. It cannot contain spaces, special characters, slashes, or backslashes.
         # self.id = "openai_pipeline"
-        self.name = "Mistral Pipeline"
+        self.name = "Mistral-8x7B (duck.ai)"
         pass
 
     async def on_startup(self):
@@ -42,6 +42,7 @@ class Pipeline:
 
         headers = {}
         headers["Content-Type"] = "application/json"
+        headers["x-vqd-4"] = '4-91675495526935490090615873620037444973'
 
         payload = {**body, "model": MODEL}
 
